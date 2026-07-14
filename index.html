@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -28,7 +28,6 @@
             align-items: center;
         }
 
-        /* Gingham Pattern Strip */
         .gingham-banner {
             position: absolute;
             left: 6%;
@@ -44,7 +43,6 @@
             border-radius: 2px;
         }
 
-        /* Safety Pin */
         .safety-pin {
             position: absolute;
             top: 2.5vh;
@@ -80,7 +78,6 @@
             border-radius: 50%;
         }
 
-        /* Kiss Mark */
         .kiss-sticker {
             position: absolute;
             left: 4%;
@@ -106,7 +103,6 @@
         .kiss-sticker::before { top: 8px; transform: rotate(-5deg); }
         .kiss-sticker::after { bottom: 8px; border-radius: 0 0 50% 50%; transform: rotate(5deg); }
 
-        /* New Real Image Rose Component (Bottom Left) */
         .rose-sticker-box {
             position: absolute;
             left: 1%;
@@ -123,7 +119,6 @@
             display: block;
         }
 
-        /* Right Side Decorations */
         .right-bg-decor {
             position: absolute;
             right: 4%;
@@ -143,7 +138,6 @@
             filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.4));
         }
 
-        /* Music Button */
         .music-control-container {
             position: fixed;
             top: 20px;
@@ -172,7 +166,6 @@
             transform: scale(1.05);
         }
 
-        /* Ribbon */
         .ribbon-bow {
             position: absolute;
             top: -14px;
@@ -183,7 +176,6 @@
             filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.4));
         }
 
-        /* Book Page Container with 100% CLEAR IMAGE Background */
         .scrapbook-paper {
             width: 88%;
             max-width: 460px;
@@ -201,6 +193,14 @@
             flex-direction: column;
             margin-left: 30px;
             border-left: 6px solid #2b080e; 
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .scrapbook-paper.hidden {
+            opacity: 0;
+            transform: translateX(-50px) scale(0.95);
+            pointer-events: none;
+            position: absolute;
         }
 
         .scrapbook-paper::after {
@@ -286,6 +286,39 @@
             text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
         }
 
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .page-navigation-btn {
+            background: linear-gradient(135deg, #b81d24, #901418);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 13px;
+            font-weight: 600;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .page-navigation-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(184, 29, 36, 0.5);
+            background: linear-gradient(135deg, #cc242c, #a81c21);
+        }
+
         .stamp-footer {
             background-color: rgba(214, 201, 170, 0.9); 
             border: 1px dashed #6e603f;
@@ -340,7 +373,7 @@
         </button>
     </div>
 
-    <div class="scrapbook-paper">
+    <div class="scrapbook-paper" id="page1">
         <svg class="ribbon-bow" viewBox="0 0 100 100">
             <path d="M 50 50 C 20 20, 20 40, 50 50 C 80 20, 80 40, 50 50 M 50 50 C 30 80, 45 85, 40 95 M 50 50 C 70 80, 55 85, 60 95" fill="#b81d24"/>
             <circle cx="50" cy="50" r="6" fill="#901418" />
@@ -370,13 +403,60 @@
                 <div class="book-paragraph"><span class="red-highlight">Kya sach mein mera hona ya na hona tumhare liye koi maayne nahi rakhta? Itna toot chuka hoon andar se ki ab chahkar bhi roya nahi jata.</span> Har raat aankhein band karte hi sirf yehi sawal dimaag mein goonjta hai, Tannu, ki aakhir meri galti kya thi? Maine to bas tumhe apni poori kaynat maankar toot kar chaha tha, Tannu.</div>
                 <div class="book-paragraph">Kya kisi se itni shiddat wali mohabbat karna hi meri sabse badi saza ban gayi hai, Tannu? <span class="red-highlight">Jab tum mere messages ko dekh kar bhi undekha kar deti ho, ya jab tumhari baaton mein wo pehle jaisa pyaar nahi jhalakta, tab mera dil andar tak cheekh padta hai.</span> Main to tumhare ek bulawe par apna sab kuch chhodkar hazir raha, Tannu.</div>
                 <div class="book-paragraph"><span class="red-highlight">Par jaw mujhe tumhari sabse zyada zarurat hoti hai, tab main khud ko is matlabi duniya mein bilkul akela aur lawaris paata hoon. Yeh tumhari khamoshi mujhe har roz dheere-dheere andar se khokhla kar ke maar rahi hai.</span> Main thak chuka hoon is jaanleva overthinking se, Tannu, aur is roz-roz ke ghutne se.</div>
-                <div class="book-paragraph">Par sabse badi bebasi ye hai, Tannu, ki itna sab hone ke baad bhi, ye kambakht dil tumhare alawa kisi aur ke baare mein sochne ki ijajat hi nahi deta. <span class="red-highlight">Mera dil sach mein bahut zyada ro raha hai. Mujhe bas itna bura lagta hai ki tum mere is bikhre hue dil ke dard ko mahsoos tak nahi kar pa rahi ho. Mujhe sach mein bahut hurt hua hai, bahut zyada hurt hua hai.</span></div>
+                <div class="book-paragraph">Par sabse badi bebasi ye hai, Tannu, ki itna sab hone ke baad bhi, ye kambakht dil tumhare alawa kisi aur ke baare mein sochne ki ijajat hi nahi deta. <span class="red-highlight">Mera dil sach mein bahut zyada ro raha hai. Mujhe bas itna bura lagta hai ki tum mere id bikhre hue dil ke dard ko mahsoos tak nahi kar pa rahi ho. Mujhe sach mein bahut hurt hua hai, bahut zyada hurt hua hai.</span></div>
                 <div class="book-paragraph">Main bas chahta hoon ki tum is dard ki gehrai ko ek baar samjho ki tumhara thoda sa badla hua vyavahar bhi mujhe kitna zyada tod kar rakh deta hai, Tannu. Tumhare liye meri mohabbat hamesha paak thi aur hamesha rahegi, Tannu. Hamesha apna khayal rakhna, meri pyaari Tannu.</div>
+                
+                <div class="btn-container">
+                    <button class="page-navigation-btn" onclick="navigateToPage('page2')">Next Page <i class="fas fa-arrow-right ml-1"></i></button>
+                </div>
             </div>
         </div>
 
         <div class="stamp-footer text-center">
             I love you, forever and always
+        </div>
+        
+        <footer>
+            MADE WITH <i class="fa-solid fa-heart" style="color: #ff4d4d;"></i> FOR TANNU
+        </footer>
+    </div>
+
+    <div class="scrapbook-paper hidden" id="page2">
+        <svg class="ribbon-bow" viewBox="0 0 100 100">
+            <path d="M 50 50 C 20 20, 20 40, 50 50 C 80 20, 80 40, 50 50 M 50 50 C 30 80, 45 85, 40 95 M 50 50 C 70 80, 55 85, 60 95" fill="#b81d24"/>
+            <circle cx="50" cy="50" r="6" fill="#901418" />
+        </svg>
+
+        <div class="title-text">My Last Questions...</div>
+        <div class="scroll-indicator-container">
+            <div class="scroll-hint-line"></div>
+            <span class="scroll-hint-text"><i class="fas fa-chevron-down mr-1"></i> Scroll down</span>
+        </div>
+        
+        <div class="scrollable-text-box">
+            <div class="letter-text">
+                <div class="book-paragraph"><span class="red-highlight">Tannu, kya main sach mein tumhare liye koi maayne nahi rakhta?</span></div>
+                
+                <div class="book-paragraph"><span class="red-highlight">Kya sach mein meri feelings valueless hain?</span></div>
+                
+                <div class="book-paragraph">Kyun tumhare liye dusre log itne important hain aur main nahi? Kyun unke baare mein itna sochti ho, aur mujhe rote hue akela chhod deti ho?</div>
+                
+                <div class="book-paragraph">Un logon ko farq bhi nahi padta, phir bhi tum unke peeche roti ho… aur kabhi kabhi mujhe rula kar chali jaati ho. <span class="red-highlight">Mere efforts mein kya kami thi?</span></div>
+                
+                <div class="book-paragraph">Maine har mumkin koshish ki thi tumhe protect karne ki, tumhare liye sab kuch karne ki… par phir bhi dusron ke liye feelings kyun, aur mere liye kyun nahi? 🙂</div>
+                
+                <div class="book-paragraph"><span class="red-highlight">I’m sorry, par shayad ab mujhse kuch nahi ho payega. Main poora toot chuka hoon.</span></div>
+                
+                <div class="book-paragraph">Dhoke se bhi zyada dard deti hai jhooti umeed… <span class="red-highlight">yeh zeher tumne mujhe diya hai. 🙂</span></div>
+
+                <div class="btn-container">
+                    <button class="page-navigation-btn" onclick="navigateToPage('page1')"><i class="fas fa-arrow-left mr-1"></i> Back</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="stamp-footer text-center">
+            Broken Inside...
         </div>
         
         <footer>
@@ -396,10 +476,29 @@
             }
         }, { passive: false });
 
+        function navigateToPage(pageId) {
+            const page1 = document.getElementById('page1');
+            const page2 = document.getElementById('page2');
+            
+            if (pageId === 'page2') {
+                page1.classList.add('hidden');
+                setTimeout(() => {
+                    page2.classList.remove('hidden');
+                    document.querySelector('#page2 .scrollable-text-box').scrollTop = 0;
+                }, 400);
+            } else {
+                page2.classList.add('hidden');
+                setTimeout(() => {
+                    page1.classList.remove('hidden');
+                    document.querySelector('#page1 .scrollable-text-box').scrollTop = 0;
+                }, 400);
+            }
+        }
+
         let player;
         let isPlaying = false;
         let apiReady = false;
-        let userWantsPlay = false; // Tracks if user tapped before API loaded
+        let userWantsPlay = false; 
 
         const playToggleBtn = document.getElementById('playToggleBtn');
         const btnIcon = document.getElementById('btnIcon');
@@ -427,14 +526,12 @@
             apiReady = true;
             playToggleBtn.addEventListener('click', toggleMusic);
             
-            // If user clicked the button early, start it now
             if (userWantsPlay) {
                 executePlay();
             }
         }
 
         function onPlayerStateChange(event) {
-            // YT.PlayerState.PLAYING is 1
             if (event.data === 1) {
                 btnIcon.className = "fas fa-pause";
                 isPlaying = true;
@@ -443,7 +540,6 @@
 
         function executePlay() {
             player.playVideo();
-            // Fallback: forcefully turn volume up in case it's muted
             if(typeof player.unMute === 'function') {
                 player.unMute();
                 player.setVolume(100);
@@ -452,13 +548,12 @@
 
         function toggleMusic() {
             if (!isPlaying) {
-                // Show loading animation immediately on single tap
                 btnIcon.className = "fas fa-spinner fa-spin";
                 
                 if (apiReady && player) {
                     executePlay();
                 } else {
-                    userWantsPlay = true; // Wait for player ready trigger
+                    userWantsPlay = true; 
                 }
             } else {
                 if (player) {
@@ -470,7 +565,6 @@
             }
         }
 
-        // Emergency fallback if button is clicked before script completely evaluates
         playToggleBtn.addEventListener('click', function() {
             if (!apiReady && !isPlaying) {
                 btnIcon.className = "fas fa-spinner fa-spin";
