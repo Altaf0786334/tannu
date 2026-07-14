@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Tannu</title>
+    
+    <!-- Icons & Fonts -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;1,400&family=Reenie+Beanie&display=swap" rel="stylesheet">
+    
+    <!-- Bootstrap Core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        html, body { 
+            width: 100%;
+            height: 100%;
+            overflow: hidden; 
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            position: relative;
+            background-color: #3b0a11; 
+        }
+        
+        body { 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Gingham Pattern Strip */
+        .gingham-banner {
+            position: absolute;
+            left: 6%;
+            top: 4vh;
+            width: 85px;
+            height: 92vh;
+            background-color: #ffffff;
+            background-image: linear-gradient(90deg, rgba(184, 29, 36, 0.45) 50%, transparent 50%),
+                              linear-gradient(rgba(184, 29, 36, 0.45) 50%, transparent 50%);
+            background-size: 16px 16px;
+            z-index: 1;
+            box-shadow: 3px 5px 15px rgba(0,0,0,0.4);
+            border-radius: 2px;
+        }
+
+        /* Safety Pin */
+        .safety-pin {
+            position: absolute;
+            top: 2.5vh;
+            left: 5%;
+            width: 90px;
+            height: 30px;
+            border: 3px solid #dcdde1;
+            border-radius: 20px;
+            transform: rotate(-15deg);
+            z-index: 6;
+            filter: drop-shadow(2px 3px 3px rgba(0,0,0,0.5));
+            box-shadow: inset 1px 1px 2px #fff;
+        }
+        .safety-pin::before {
+            content: "";
+            position: absolute;
+            right: -2px;
+            top: -4px;
+            width: 25px;
+            height: 32px;
+            background: #b2bec3;
+            border-radius: 5px 12px 12px 5px;
+            box-shadow: inset 1px 1px 2px #fff;
+        }
+        .safety-pin::after {
+            content: "";
+            position: absolute;
+            left: -4px;
+            top: -2px;
+            width: 22px;
+            height: 22px;
+            border: 3px solid #dcdde1;
+            border-radius: 50%;
+        }
+
+        /* Kiss Mark */
+        .kiss-sticker {
+            position: absolute;
+            left: 4%;
+            bottom: 35vh;
+            width: 65px;
+            height: 45px;
+            background: radial-gradient(ellipse at center, rgba(184, 29, 36, 0.85) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 4;
+            transform: rotate(-12deg);
+            filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.3));
+            pointer-events: none;
+        }
+        .kiss-sticker::before, .kiss-sticker::after {
+            content: "";
+            position: absolute;
+            width: 50px;
+            height: 12px;
+            background: #b81d24;
+            border-radius: 50% 50% 0 0;
+            left: 8px;
+        }
+        .kiss-sticker::before { top: 8px; transform: rotate(-5deg); }
+        .kiss-sticker::after { bottom: 8px; border-radius: 0 0 50% 50%; transform: rotate(5deg); }
+
+        /* New Real Image Rose Component (Bottom Left) */
+        .rose-sticker-box {
+            position: absolute;
+            left: 1%;
+            bottom: 1vh;
+            z-index: 5;
+            filter: drop-shadow(4px 6px 8px rgba(0,0,0,0.6));
+            transform: rotate(5deg);
+            pointer-events: none;
+        }
+        
+        .real-rose-img {
+            width: 95px;
+            height: auto;
+            display: block;
+        }
+
+        /* Right Side Decorations */
+        .right-bg-decor {
+            position: absolute;
+            right: 4%;
+            width: 120px;
+            height: 70vh;
+            z-index: 1;
+            font-family: 'Reenie Beanie', cursive;
+            color: rgba(234, 222, 184, 0.12);
+            font-size: 26px;
+            line-height: 1.2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .bg-star {
+            position: absolute;
+            color: #4a0711;
+            filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.4));
+        }
+
+        /* Music Button */
+        .music-control-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10;
+        }
+
+        .music-control-btn {
+            background-color: #b81d24; 
+            color: #ffffff; 
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            box-shadow: 0 4px 12px rgba(184, 29, 36, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            outline: none !important;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-control-btn:hover {
+            background-color: #901418;
+            transform: scale(1.05);
+        }
+
+        /* Ribbon */
+        .ribbon-bow {
+            position: absolute;
+            top: -14px;
+            right: -14px;
+            width: 65px;
+            z-index: 5;
+            pointer-events: none;
+            filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.4));
+        }
+
+        /* Book Page Container with 100% CLEAR IMAGE Background */
+        .scrapbook-paper {
+            width: 88%;
+            max-width: 460px;
+            height: 78vh; 
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                        url('https://files.catbox.moe/y8qqcd.jpg');
+            background-size: cover;
+            background-position: center;
+            border-radius: 4px;
+            padding: 35px 20px 15px 28px;
+            position: relative;
+            z-index: 2;
+            box-shadow: 5px 20px 45px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            margin-left: 30px;
+            border-left: 6px solid #2b080e; 
+        }
+
+        .scrapbook-paper::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 12px;
+            background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+            pointer-events: none;
+        }
+
+        .title-text {
+            font-family: 'Playfair Display', serif;
+            color: #ffffff; 
+            font-weight: 700;
+            font-size: 26px;
+            margin-bottom: 3px;
+            text-align: center;
+            font-style: italic;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+        }
+
+        .scroll-indicator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 4px;
+        }
+
+        .scroll-hint-line {
+            width: 70px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #ff4d4d, transparent);
+        }
+
+        .scroll-hint-text {
+            font-family: 'Poppins', sans-serif;
+            font-size: 9px;
+            font-weight: 600;
+            color: #ff4d4d;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            animation: blinkText 2.5s infinite ease-in-out;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+        }
+
+        @keyframes blinkText {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+
+        .scrollable-text-box {
+            flex: 1;
+            overflow-y: auto; 
+            padding-right: 12px;
+            text-align: justify;
+            -ms-overflow-style: none;  
+            scrollbar-width: none; 
+        }
+        
+        .scrollable-text-box::-webkit-scrollbar {
+            display: none; 
+        }
+
+        .book-paragraph {
+            margin-bottom: 24px; 
+            font-family: 'Montserrat', sans-serif;
+            font-size: 13.5px;
+            line-height: 1.85;
+            color: #ffffff; 
+            font-weight: 500;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
+        }
+
+        .red-highlight {
+            color: #ff4d4d !important; 
+            font-weight: 600;
+            padding: 0 2px;
+            border-radius: 2px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
+        }
+
+        .stamp-footer {
+            background-color: rgba(214, 201, 170, 0.9); 
+            border: 1px dashed #6e603f;
+            padding: 5px 15px;
+            display: inline-block;
+            margin: 10px auto 5px auto;
+            font-family: 'Playfair Display', serif;
+            font-size: 13px;
+            font-weight: 600;
+            font-style: italic;
+            color: #2b1115;
+            box-shadow: 2px 4px 10px rgba(0,0,0,0.4);
+        }
+
+        footer {
+            font-family: 'Poppins', sans-serif;
+            font-size: 10px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-top: 4px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="youtube-player-container">
+        <div id="yt-audio-player"></div>
+    </div>
+
+    <div class="gingham-banner"></div>
+    <div class="safety-pin"></div>
+    <div class="kiss-sticker"></div>
+    
+    <!-- Real Image Rose Render Section -->
+    <div class="rose-sticker-box">
+        <img src="https://files.catbox.moe/wigfv4.png" alt="Rose" class="real-rose-img">
+    </div>
+
+    <div class="right-bg-decor">
+        I love you. I love you. I love you. I love you. I love you. I love you. I love you.
+        <i class="fa-solid fa-star bg-star" style="top: 25vh; right: 10px; font-size: 20px;"></i>
+        <i class="fa-solid fa-star bg-star" style="top: 29vh; right: 45px; font-size: 14px;"></i>
+        <i class="fa-solid fa-star bg-star" style="top: 33vh; right: 20px; font-size: 16px;"></i>
+    </div>
+
+    <div class="music-control-container">
+        <button class="music-control-btn" id="playToggleBtn">
+            <i class="fas fa-play" id="btnIcon"></i>
+        </button>
+    </div>
+
+    <div class="scrapbook-paper">
+        <svg class="ribbon-bow" viewBox="0 0 100 100">
+            <path d="M 50 50 C 20 20, 20 40, 50 50 C 80 20, 80 40, 50 50 M 50 50 C 30 80, 45 85, 40 95 M 50 50 C 70 80, 55 85, 60 95" fill="#b81d24"/>
+            <circle cx="50" cy="50" r="6" fill="#901418" />
+        </svg>
+
+        <div class="title-text">For Tannu</div>
+        <div class="scroll-indicator-container">
+            <div class="scroll-hint-line"></div>
+            <span class="scroll-hint-text"><i class="fas fa-chevron-down mr-1"></i> Scroll down</span>
+        </div>
+        
+        <div class="scrollable-text-box">
+            <div class="letter-text">
+                <div class="book-paragraph">Tannu... sun rahi ho na? Tannu, haan main gussa hoon. Bahut zyada gussa hoon, Tannu, aur usse bhi zyada hurt hoon. Shayad isliye meri baatein aaj itni kadvi lag rahi hain, Tannu.</div>
+                <div class="book-paragraph">Mujhe to samajh hi nahi aata, Tannu, ki itna sab hone ke baad bhi yeh pagal dil sirf tumhare baare mein hi kyun sochta rehta hoon, Tannu? <span class="red-highlight">Jab bhi lagta hai ki sab theek ho jayega, tabhi kuch na kuch aisa ho jata hai ki phir se mujhe aisa lagne lagta hai ki sirf main hi akela is rishte mein efforts daal raha hoon.</span></div>
+                <div class="book-paragraph">Haan Tannu, mujhe jalan hoti hai, bahut zyada jalan hoti hai, Tannu. <span class="red-highlight">Jab tum kisi aur ko importance deti ho, kisi aur ke liye hans-hans kar time nikal leti ho, aur mere liye sab kuch ek normal aupcharikta jaisa treat karti ho, tab mujhe bahut zyada bura lagta hai.</span> Main duniya ke saamne yeh dikhava kabhi nahi kar sakta, Tannu, ki mujhe in sab baaton se koi fark nahi padta, kyunki hakikat yeh hai ki mujhe bahut fark padta hai, Tannu.</div>
+                <div class="book-paragraph">Main perfect nahi hoon, Tannu, jaanta hoon. Main gussa bhi karta hoon, Tannu, bematlab ki zid bhi karta hoon, Tannu, aur har chhoti baat par overthink bhi karta hoon. <span class="red-highlight">Lekin ek baat kabhi jhooth nahi thi, Tannu, aur wo ye hai ki maine tumhe hamesha apni jaan se badhkar chaha hai, Tannu.</span></div>
+                <div class="book-paragraph">Bas ek baar mujhse saaf-saaf sach bol do, Tannu. Agar tumhare dil mein mere liye sach mein kuch bhi nahi bacha hai, Tannu, to seedha mere munh par bol do. Agar kuch hai, Tannu, to phir hamare beech yeh itni dooriyan kyun hain, Tannu? Itna bada confusion kyun paal rakha hai, Tannu? Main bas ek chhoti si clarity chahta hoon, Tannu.</div>
+                <div class="book-paragraph">Main kisi aur insaan se compete nahi karna chahta, Tannu. <span class="red-highlight">Main bas yeh jaana chahta hoon ki meri jagah tumhare dil mein aaj bhi surakshit hai ya nahi?</span> Jo bhi jawab ho, Tannu, bas sach bolna. <span class="red-highlight">Jhoothi umeed se zyada dard is duniya mein aur kuch nahi deta.</span></div>
+                <div class="book-paragraph">Har lamha jo tumhare bina guzarta hai, aisa lagta hai koi andar se jaan kheench raha ho. Tumhe lagta hai main badal gaya hoon, par sach ye hai, Tannu, ki main andar se bikhar chuka hoon. Tumse baat karne ke liye tadapna aur phir tumhara wahi thanda vyavahar milna, mujhe bilkul khamosh kar deta hai.</div>
+                <div class="book-paragraph">Dekh Tannu, sach boloon to mera dimaag bahut kharab ho raha hai. <span class="red-highlight">Jab bhi mujhe aisa lagta hai ki tum mere alawa kisi aur ke baare mein itna zyada soch rahi ho, tab dil se bahut bura lagta hai.</span> Main jhooth nahi bolunga, Tannu, mujhe bhayanak jalan hoti hai.</div>
+                <div class="book-paragraph"><span class="red-highlight">Kabhi-kabhi lagta hai ki main tumhare liye itni mehnat kar raha hoon, tumhari itni parwah karta hoon, aur phir bhi aakhir mein main hi sabse peeche chhoot jata hoon.</span> Shayad isliye mujhe itna roona aur gussa aa jata hai, Tannu. Main bas yehi sochta rehta hoon, Tannu, ki maine hamesha tumhara har haal mein saath dene ki koshish ki.</div>
+                <div class="book-paragraph">Jab tum pareshan thi, Tannu, tab main tumhare saath tha. Jab tumhe rone ke liye kisi ke kandhe ki zarurat thi, Tannu, tab main tha. <span class="red-highlight">Isliye jab aaj lagta hai ki main tumhare liye utna important nahi hoon jitna tum mere liye hai, to rooh tak kaamp jaati hai aur bahut dard hota hai.</span></div>
+                <div class="book-paragraph">Mujhe nahi pata tumhare dil mein is waqt kya chal raha hai, Tannu. Bas itna jaanta hoon ki main tumse bepanah mohabbat karta hoon, Tannu. Isi wajah se kabhi-kabhi meri baatein itni gusse wali ho jaati hain, Tannu. Shayad yeh sahi tareeka nahi hai, Tannu, lekin meri feelings bilkul sacchi hain.</div>
+                <div class="book-paragraph">Agar tumhare dil mein mere liye thodi si bhi jagah hai, Tannu, to mujhe uska ehsaas karao. Agar nahi hai, Tannu, to sach bol do. Main is jhoothi umeed ko lekar til-til jeena nahi chahta, Tannu. Bas itna samajh lo ki meri jealousy, mera gussa aur meri zid ke peeche sirf ek hi baat hai, Tannu... main tumhe kabhi khona nahi chahta, Tannu.</div>
+                <div class="book-paragraph"><span class="red-highlight">Maine kabhi socha bhi nahi tha ki hum is mod par aakar khade ho jayenge, jahan mujhe apni hi mohabbat ka saboot dene ke liye gidgidana padega.</span> Kya mera har din tum par shuru aur tum par khatam hona meri sabse badi khata thi, Tannu?</div>
+                <div class="book-paragraph"><span class="red-highlight">Kya sach mein mera hona ya na hona tumhare liye koi maayne nahi rakhta? Itna toot chuka hoon andar se ki ab chahkar bhi roya nahi jata.</span> Har raat aankhein band karte hi sirf yehi sawal dimaag mein goonjta hai, Tannu, ki aakhir meri galti kya thi? Maine to bas tumhe apni poori kaynat maankar toot kar chaha tha, Tannu.</div>
+                <div class="book-paragraph">Kya kisi se itni shiddat wali mohabbat karna hi meri sabse badi saza ban gayi hai, Tannu? <span class="red-highlight">Jab tum mere messages ko dekh kar bhi undekha kar deti ho, ya jab tumhari baaton mein wo pehle jaisa pyaar nahi jhalakta, tab mera dil andar tak cheekh padta hai.</span> Main to tumhare ek bulawe par apna sab kuch chhodkar hazir raha, Tannu.</div>
+                <div class="book-paragraph"><span class="red-highlight">Par jab mujhe tumhari sabse zyada zarurat hoti hai, tab main khud ko is matlabi duniya mein bilkul akela aur lawaris paata hoon. Yeh tumhari khamoshi mujhe har roz dheere-dheere andar se khokhla kar ke maar rahi hai.</span> Main thak chuka hoon is jaanleva overthinking se, Tannu, aur is roz-roz ke ghutne se.</div>
+                <div class="book-paragraph">Par sabse badi bebasi ye hai, Tannu, ki itna sab hone ke baad bhi, ye kambakht dil tumhare alawa kisi aur ke baare mein sochne ki ijajat hi nahi deta. <span class="red-highlight">Mera dil sach mein bahut zyada ro raha hai. Mujhe bas itna bura lagta hai ki tum mere is bikhre hue dil ke dard ko mahsoos tak nahi kar pa rahi ho. Mujhe sach mein bahut hurt hua hai, bahut zyada hurt hua hai.</span></div>
+                <div class="book-paragraph">Main bas chahta hoon ki tum is dard ki gehrai ko ek baar samjho ki tumhara thoda sa badla hua vyavahar bhi mujhe kitna zyada tod kar rakh deta hai, Tannu. Tumhare liye meri mohabbat hamesha paak thi aur hamesha rahegi, Tannu. Hamesha apna khayal rakhna, meri pyaari Tannu.</div>
+            </div>
+        </div>
+
+        <div class="stamp-footer text-center">
+            I love you, forever and always
+        </div>
+        
+        <footer>
+            MADE WITH <i class="fa-solid fa-heart" style="color: #ff4d4d;"></i> FOR TANNU
+        </footer>
+    </div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <script>
+        document.addEventListener("gesturestart", e => e.preventDefault());
+        document.addEventListener("dblclick", e => e.preventDefault());
+        
+        document.body.addEventListener('touchmove', function(e) {
+            if (!e.target.closest('.scrollable-text-box')) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+
+        let player;
+        let isPlaying = false;
+        const playToggleBtn = document.getElementById('playToggleBtn');
+        const btnIcon = document.getElementById('btnIcon');
+
+        function onYouTubeIframeAPIReady() {
+            player = new YT.Player('yt-audio-player', {
+                height: '0',
+                width: '0',
+                videoId: 'dOP4j6ejLik',
+                playerVars: {
+                    'playsinline': 1,
+                    'loop': 1,
+                    'playlist': 'dOP4j6ejLik',
+                    'controls': 0,
+                    'disablekb': 1
+                },
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
+        }
+
+        function onPlayerReady(event) {
+            playToggleBtn.addEventListener('click', toggleMusic);
+        }
+
+        function toggleMusic() {
+            if (!player) return;
+
+            if (!isPlaying) {
+                player.playVideo();
+                btnIcon.className = "fas fa-pause";
+                isPlaying = true;
+            } else {
+                player.pauseVideo();
+                btnIcon.className = "fas fa-play";
+                isPlaying = false;
+            }
+        }
+    </script>
+</body>
+</html>
