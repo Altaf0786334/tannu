@@ -1,13 +1,18 @@
 <!DOCTYPE html>
-<html lang="hi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>For Tannu</title>
     
+    <!-- Preload background image so it shows instantly on page 2 -->
+    <link rel="preload" as="image" href="https://files.catbox.moe/y8qqcd.jpg">
+    
+    <!-- Icons & Fonts -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,600;1,400&family=Reenie+Beanie&display=swap" rel="stylesheet">
     
+    <!-- Bootstrap Core CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
@@ -19,7 +24,7 @@
             padding: 0;
             user-select: none;
             position: relative;
-            background-color: #3b0a11; 
+            background-color: #3b0a11; /* Deep Rich Maroon Background */
         }
         
         body { 
@@ -28,6 +33,7 @@
             align-items: center;
         }
 
+        /* Gingham Pattern Strip */
         .gingham-banner {
             position: absolute;
             left: 6%;
@@ -43,6 +49,7 @@
             border-radius: 2px;
         }
 
+        /* Safety Pin */
         .safety-pin {
             position: absolute;
             top: 2.5vh;
@@ -78,6 +85,7 @@
             border-radius: 50%;
         }
 
+        /* Kiss Mark */
         .kiss-sticker {
             position: absolute;
             left: 4%;
@@ -103,6 +111,7 @@
         .kiss-sticker::before { top: 8px; transform: rotate(-5deg); }
         .kiss-sticker::after { bottom: 8px; border-radius: 0 0 50% 50%; transform: rotate(5deg); }
 
+        /* Rose Component */
         .rose-sticker-box {
             position: absolute;
             left: 1%;
@@ -119,6 +128,7 @@
             display: block;
         }
 
+        /* Right Side Decorations */
         .right-bg-decor {
             position: absolute;
             right: 4%;
@@ -138,6 +148,7 @@
             filter: drop-shadow(1px 2px 3px rgba(0,0,0,0.4));
         }
 
+        /* Music Button */
         .music-control-container {
             position: fixed;
             top: 20px;
@@ -166,6 +177,7 @@
             transform: scale(1.05);
         }
 
+        /* Ribbon */
         .ribbon-bow {
             position: absolute;
             top: -14px;
@@ -176,19 +188,16 @@
             filter: drop-shadow(2px 4px 5px rgba(0,0,0,0.4));
         }
 
+        /* Common Book Page Styling */
         .scrapbook-paper {
             width: 88%;
             max-width: 460px;
             height: 78vh; 
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
-                        url('https://files.catbox.moe/y8qqcd.jpg');
-            background-size: cover;
-            background-position: center;
             border-radius: 4px;
             padding: 35px 20px 15px 28px;
             position: relative;
             z-index: 2;
-            box-shadow: 5px 20px 45px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0,0,0,0.5);
+            box-shadow: 5px 20px 45px rgba(0, 0, 0, 0.7), inset 0 0 15px rgba(0,0,0,0.3);
             display: flex;
             flex-direction: column;
             margin-left: 30px;
@@ -210,19 +219,43 @@
             bottom: 0;
             left: 0;
             width: 12px;
-            background: linear-gradient(to right, rgba(0,0,0,0.4), transparent);
+            background: linear-gradient(to right, rgba(0,0,0,0.2), transparent);
             pointer-events: none;
         }
 
+        /* ============== PAGE 1 SPECIFIC (Vintage UI) ============== */
+        #page1 {
+            background-color: #ede2c4; /* Vintage Paper Color */
+            background-image: linear-gradient(rgba(0,0,0,0.025) 1px, transparent 1px);
+            background-size: 100% 24px; 
+        }
+        #page1 .title-text { color: #2b1115; text-shadow: none; }
+        #page1 .scroll-hint-line { background: linear-gradient(to right, transparent, #b81d24, transparent); }
+        #page1 .scroll-hint-text { color: #b81d24; text-shadow: none; }
+        #page1 .book-paragraph { color: #2b1115; text-shadow: none; }
+        #page1 .red-highlight { color: #b81d24 !important; background-color: rgba(184, 29, 36, 0.04); text-shadow: none; padding: 0 2px; border-radius: 2px;}
+        
+        /* ============== PAGE 2 SPECIFIC (Image Background) ============== */
+        #page2 {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                        url('https://files.catbox.moe/y8qqcd.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        #page2 .title-text { color: #ffffff; text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.9); }
+        #page2 .scroll-hint-line { background: linear-gradient(to right, transparent, #ff4d4d, transparent); }
+        #page2 .scroll-hint-text { color: #ff4d4d; text-shadow: 1px 1px 3px rgba(0,0,0,0.8); }
+        #page2 .book-paragraph { color: #ffffff; text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8); }
+        #page2 .red-highlight { color: #ff4d4d !important; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); padding: 0 2px; }
+
+        /* Typography & Structure elements inside pages */
         .title-text {
             font-family: 'Playfair Display', serif;
-            color: #ffffff; 
             font-weight: 700;
             font-size: 26px;
             margin-bottom: 3px;
             text-align: center;
             font-style: italic;
-            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
         }
 
         .scroll-indicator-container {
@@ -233,21 +266,15 @@
             gap: 4px;
         }
 
-        .scroll-hint-line {
-            width: 70px;
-            height: 2px;
-            background: linear-gradient(to right, transparent, #ff4d4d, transparent);
-        }
+        .scroll-hint-line { width: 70px; height: 2px; }
 
         .scroll-hint-text {
             font-family: 'Poppins', sans-serif;
             font-size: 9px;
             font-weight: 600;
-            color: #ff4d4d;
             letter-spacing: 1px;
             text-transform: uppercase;
             animation: blinkText 2.5s infinite ease-in-out;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
         }
 
         @keyframes blinkText {
@@ -264,27 +291,17 @@
             scrollbar-width: none; 
         }
         
-        .scrollable-text-box::-webkit-scrollbar {
-            display: none; 
-        }
+        .scrollable-text-box::-webkit-scrollbar { display: none; }
 
         .book-paragraph {
             margin-bottom: 24px; 
             font-family: 'Montserrat', sans-serif;
             font-size: 13.5px;
             line-height: 1.85;
-            color: #ffffff; 
             font-weight: 500;
-            text-shadow: 1px 1px 4px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8);
         }
 
-        .red-highlight {
-            color: #ff4d4d !important; 
-            font-weight: 600;
-            padding: 0 2px;
-            border-radius: 2px;
-            text-shadow: 1px 1px 3px rgba(0,0,0,0.9);
-        }
+        .red-highlight { font-weight: 600; }
 
         .btn-container {
             display: flex;
@@ -352,6 +369,7 @@
         <div id="yt-audio-player"></div>
     </div>
 
+    <!-- Decorative Elements that stay fixed -->
     <div class="gingham-banner"></div>
     <div class="safety-pin"></div>
     <div class="kiss-sticker"></div>
@@ -373,6 +391,7 @@
         </button>
     </div>
 
+    <!-- PAGE 1: Vintage Paper (No Image) -->
     <div class="scrapbook-paper" id="page1">
         <svg class="ribbon-bow" viewBox="0 0 100 100">
             <path d="M 50 50 C 20 20, 20 40, 50 50 C 80 20, 80 40, 50 50 M 50 50 C 30 80, 45 85, 40 95 M 50 50 C 70 80, 55 85, 60 95" fill="#b81d24"/>
@@ -391,7 +410,7 @@
                 <div class="book-paragraph">Mujhe to samajh hi nahi aata, Tannu, ki itna sab hone ke baad bhi yeh pagal dil sirf tumhare baare mein hi kyun sochta rehta hoon, Tannu? <span class="red-highlight">Jab bhi lagta hai ki sab theek ho jayega, tabhi kuch na kuch aisa ho jata hai ki phir se mujhe aisa lagne lagta hai ki sirf main hi akela is rishte mein efforts daal raha hoon.</span></div>
                 <div class="book-paragraph">Haan Tannu, mujhe jalan hoti hai, bahut zyada jalan hoti hai, Tannu. <span class="red-highlight">Jab tum kisi aur ko importance deti ho, kisi aur ke liye hans-hans kar time nikal leti ho, aur mere liye sab kuch ek normal aupcharikta jaisa treat karti ho, tab mujhe bahut zyada bura lagta hai.</span> Main duniya ke saamne yeh dikhava kabhi nahi kar sakta, Tannu, ki mujhe in sab baaton se koi fark nahi padta, kyunki hakikat yeh hai ki mujhe bahut fark padta hai, Tannu.</div>
                 <div class="book-paragraph">Main perfect nahi hoon, Tannu, jaanta hoon. Main gussa bhi karta hoon, Tannu, bematlab ki zid bhi karta hoon, Tannu, aur har chhoti baat par overthink bhi karta hoon. <span class="red-highlight">Lekin ek baat kabhi jhooth nahi thi, Tannu, aur wo ye hai ki maine tumhe hamesha apni jaan se badhkar chaha hai, Tannu.</span></div>
-                <div class="book-paragraph">Bas ek baar mujhse saaf-saaf sach bol do, Tannu. Agar tumhare dil mein mere liye sach mein kuch bhi nahi bacha hai, Tannu, to seedha mere munh par bol do. Agar kuch hai, Tannu, to phir hamare beige yeh itni dooriyan kyun hain, Tannu? Itna bada confusion kyun paal rakha hai, Tannu? Main bas ek chhoti si clarity chahta hoon, Tannu.</div>
+                <div class="book-paragraph">Bas ek baar mujhse saaf-saaf sach bol do, Tannu. Agar tumhare dil mein mere liye sach mein kuch bhi nahi bacha hai, Tannu, to seedha mere munh par bol do. Agar kuch hai, Tannu, to phir hamare beech yeh itni dooriyan kyun hain, Tannu? Itna bada confusion kyun paal rakha hai, Tannu? Main bas ek chhoti si clarity chahta hoon, Tannu.</div>
                 <div class="book-paragraph">Main kisi aur insaan se compete nahi karna chahta, Tannu. <span class="red-highlight">Main bas yeh jaana chahta hoon ki meri jagah tumhare dil mein aaj bhi surakshit hai ya nahi?</span> Jo bhi jawab ho, Tannu, bas sach bolna. <span class="red-highlight">Jhoothi umeed se zyada dard is duniya mein aur kuch nahi deta.</span></div>
                 <div class="book-paragraph">Har lamha jo tumhare bina guzarta hai, aisa lagta hai koi andar se jaan kheench raha ho. Tumhe lagta hai main badal gaya hoon, par sach ye hai, Tannu, ki main andar se bikhar chuka hoon. Tumse baat karne ke liye tadapna aur phir tumhara wahi thanda vyavahar milna, mujhe bilkul khamosh kar deta hai.</div>
                 <div class="book-paragraph">Dekh Tannu, sach boloon to mera dimaag bahut kharab ho raha hai. <span class="red-highlight">Jab bhi mujhe aisa lagta hai ki tum mere alawa kisi aur ke baare mein itna zyada soch rahi ho, tab dil se bahut bura lagta hai.</span> Main jhooth nahi bolunga, Tannu, mujhe bhayanak jalan hoti hai.</div>
@@ -402,10 +421,11 @@
                 <div class="book-paragraph"><span class="red-highlight">Maine kabhi socha bhi nahi tha ki hum is mod par aakar khade ho jayenge, jahan mujhe apni hi mohabbat ka saboot dene ke liye gidgidana padega.</span> Kya mera har din tum par shuru aur tum par khatam hona meri sabse badi khata thi, Tannu?</div>
                 <div class="book-paragraph"><span class="red-highlight">Kya sach mein mera hona ya na hona tumhare liye koi maayne nahi rakhta? Itna toot chuka hoon andar se ki ab chahkar bhi roya nahi jata.</span> Har raat aankhein band karte hi sirf yehi sawal dimaag mein goonjta hai, Tannu, ki aakhir meri galti kya thi? Maine to bas tumhe apni poori kaynat maankar toot kar chaha tha, Tannu.</div>
                 <div class="book-paragraph">Kya kisi se itni shiddat wali mohabbat karna hi meri sabse badi saza ban gayi hai, Tannu? <span class="red-highlight">Jab tum mere messages ko dekh kar bhi undekha kar deti ho, ya jab tumhari baaton mein wo pehle jaisa pyaar nahi jhalakta, tab mera dil andar tak cheekh padta hai.</span> Main to tumhare ek bulawe par apna sab kuch chhodkar hazir raha, Tannu.</div>
-                <div class="book-paragraph"><span class="red-highlight">Par jaw mujhe tumhari sabse zyada zarurat hoti hai, tab main khud ko is matlabi duniya mein bilkul akela aur lawaris paata hoon. Yeh tumhari khamoshi mujhe har roz dheere-dheere andar se khokhla kar ke maar rahi hai.</span> Main thak chuka hoon is jaanleva overthinking se, Tannu, aur is roz-roz ke ghutne se.</div>
+                <div class="book-paragraph"><span class="red-highlight">Par jab mujhe tumhari sabse zyada zarurat hoti hai, tab main khud ko is matlabi duniya mein bilkul akela aur lawaris paata hoon. Yeh tumhari khamoshi mujhe har roz dheere-dheere andar se khokhla kar ke maar rahi hai.</span> Main thak chuka hoon is jaanleva overthinking se, Tannu, aur is roz-roz ke ghutne se.</div>
                 <div class="book-paragraph">Par sabse badi bebasi ye hai, Tannu, ki itna sab hone ke baad bhi, ye kambakht dil tumhare alawa kisi aur ke baare mein sochne ki ijajat hi nahi deta. <span class="red-highlight">Mera dil sach mein bahut zyada ro raha hai. Mujhe bas itna bura lagta hai ki tum mere id bikhre hue dil ke dard ko mahsoos tak nahi kar pa rahi ho. Mujhe sach mein bahut hurt hua hai, bahut zyada hurt hua hai.</span></div>
                 <div class="book-paragraph">Main bas chahta hoon ki tum is dard ki gehrai ko ek baar samjho ki tumhara thoda sa badla hua vyavahar bhi mujhe kitna zyada tod kar rakh deta hai, Tannu. Tumhare liye meri mohabbat hamesha paak thi aur hamesha rahegi, Tannu. Hamesha apna khayal rakhna, meri pyaari Tannu.</div>
                 
+                <!-- Navigate to Page 2 Button -->
                 <div class="btn-container">
                     <button class="page-navigation-btn" onclick="navigateToPage('page2')">Next Page <i class="fas fa-arrow-right ml-1"></i></button>
                 </div>
@@ -421,6 +441,7 @@
         </footer>
     </div>
 
+    <!-- PAGE 2: Background Image Rendered Here -->
     <div class="scrapbook-paper hidden" id="page2">
         <svg class="ribbon-bow" viewBox="0 0 100 100">
             <path d="M 50 50 C 20 20, 20 40, 50 50 C 80 20, 80 40, 50 50 M 50 50 C 30 80, 45 85, 40 95 M 50 50 C 70 80, 55 85, 60 95" fill="#b81d24"/>
@@ -449,6 +470,7 @@
                 
                 <div class="book-paragraph">Dhoke se bhi zyada dard deti hai jhooti umeed… <span class="red-highlight">yeh zeher tumne mujhe diya hai. 🙂</span></div>
 
+                <!-- Navigate back to Page 1 Button -->
                 <div class="btn-container">
                     <button class="page-navigation-btn" onclick="navigateToPage('page1')"><i class="fas fa-arrow-left mr-1"></i> Back</button>
                 </div>
@@ -464,6 +486,7 @@
         </footer>
     </div>
 
+    <!-- YouTube Music Script -->
     <script src="https://www.youtube.com/iframe_api"></script>
 
     <script>
